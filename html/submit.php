@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $message = $_POST["message"];
  
     // Replace 'your-sns-topic-arn' with the ARN of your SNS topic
-    $snsTopicArn = 'arn:aws:sns:us-east-1:XXXXX:test';
+    $snsTopicArn = 'arn:aws:sns:us-east-1:767398090129:topic';
  
     // Initialize SNS client
     $snsClient = new SnsClient([
