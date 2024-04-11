@@ -1,22 +1,24 @@
 # Docker_container
-Lo primero sera crear una EC2 en AWS con los puertos 80, 8080 y 3036 abiertos y con conexión a SSH.
 
-Pasos para ejecutar Docker:
+Para comenzar, debes crear una EC2 en AWS con los puertos 80, 8080 y 3036 abiertos, así como conexión SSH.
 
-1- Instalar Docker
-2- Instalar docker-compose
-3- Crear topico en AWS "simple notification service" (SNS)
-4- Ir a la carpeta html y editar el archivo submit.php y cambiar la linea $snsTopicArn = 'arn:aws:sns:us-east-1:XXXXX:test'; y sustituir esa linea con el arn que se ha creado al realizar el topico.
-5- Crear una suscripción de ese Topico
-6- Añadir un Rol a la EC2 en AWS
-7- Vamos a la consola de la EC2, vamos a acciones -> seguridad -> Añadir Rol
-8- Elegimos el Rol “LabInstanceProfile”
-9- Luego vamos al servicio IAM y buscamos este Rol, y añadimos la politica “SNSFullAccess”
-10- Finalmente ejecutamos: sudo docker-compose up
+## Pasos para ejecutar Docker:
 
-11- Pega la url de la EC2 en el navegador, y accederemos al formulario que envia mensajes a al email suscrito del topico.
+1. Instalar Docker
+2. Instalar docker-compose
+3. Crear un tema en AWS "Simple Notification Service" (SNS)
+4. Ir a la carpeta `html` y editar el archivo `submit.php`. Cambiar la línea `$snsTopicArn = 'arn:aws:sns:us-east-1:XXXXX:test';` por el ARN generado al crear el tema.
+5. Crear una suscripción para ese tema
+6. Asignar un Rol a la EC2 en AWS
+   - Ir a la consola de EC2, seleccionar "Acciones" -> "Seguridad" -> "Añadir Rol"
+   - Elegir el Rol “LabInstanceProfile”
+7. Luego, dirigirse al servicio IAM, buscar este Rol y añadir la política “SNSFullAccess”
+8. Finalmente, ejecutar: `sudo docker-compose up`
 
-12- Pega la url de la EC2 de nuevo asi -> url:8080
-Asi nos saldra la pagina de login de phpMyAdmin y tendremos que ingresar el user: root y el password: example_password
+## Uso:
 
+- Pegar la URL de la EC2 en el navegador para acceder al formulario que envía mensajes al correo electrónico suscrito del tema.
 
+- Pegar la URL de la EC2 seguido de `:8080` en el navegador para acceder a la página de inicio de sesión de phpMyAdmin. Los credenciales son:
+  - Usuario: root
+  - Contraseña: example_password
